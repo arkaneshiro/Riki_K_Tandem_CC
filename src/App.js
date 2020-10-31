@@ -53,8 +53,11 @@ const App = () => {
   // picks random question until it picks one not yet asked
   const newQ = id => {
     let r = NaN
-    while (asked.includes(r) || isNaN(r)) {
+    while (true) {
       r = Math.floor(Math.random() * Math.floor(20));
+      if (!asked.includes(r)) {
+        break
+      }
     }
     setRand(r)
     setOptions(shuffle([...data[r].incorrect, data[r].correct]))
@@ -98,7 +101,10 @@ const App = () => {
             <input
               type='button'
               value='another round?'
-              onClick={() => {setAsked([22])}}
+              onClick={() => {
+                setAsked([22]);
+                setScore(0);
+              }}
             />
           </>
         : ''
