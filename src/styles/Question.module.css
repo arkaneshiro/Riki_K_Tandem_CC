@@ -11,6 +11,24 @@
     font-weight: bold;
 }
 
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.correct {
+    background-color: lime;
+}
+
+.incorrect {
+    background-color: orangered;
+}
+
+.submitButton {
+    margin-top: 5px;
+}
+
 .option {
     width: 300px;
     display: flex;
@@ -21,12 +39,4 @@
 .optionClickable:hover {
     background-color: wheat;
     cursor: pointer;
-}
-
-.correct {
-    background-color: lime;
-}
-
-.incorrect {
-    background-color: orangered;
 }

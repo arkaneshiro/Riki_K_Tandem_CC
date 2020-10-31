@@ -12,7 +12,10 @@ const Question = ({question, options, correct, qNum, answered, setAnswered, ans,
       </div>
         {answered
         // if question answered return options with highlighting
-        ? <>
+        ? <form
+            className={style.form}
+            onSubmit={()=>{newQ(qNum)}}
+          >
             {options.map((option, i) => {
               if (option === correct) {
                 return(
@@ -35,11 +38,11 @@ const Question = ({question, options, correct, qNum, answered, setAnswered, ans,
               }
             })}
             <input
-              type='button'
-              onClick={()=>{newQ(qNum)}}
+              className={style.submitButton}
+              type='submit'
               value='Next Question'
             />
-          </>
+          </form>
         // if question not answered return clickable options
         : options.map((option, i) => {
             return(

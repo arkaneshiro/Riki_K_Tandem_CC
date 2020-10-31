@@ -74,7 +74,7 @@ const App = () => {
   return (
     <div>
       <Title/>
-      <div className={style.flexContainer}>
+      <div className={`${style.flexContainer} ${style.page}`}>
         {(asked.length !== 0 && asked.length !== 12 && rand !== '')
         ? <Question
             question={data[rand].question}
@@ -92,7 +92,7 @@ const App = () => {
         {(asked.length === 0)
         ? <input
             type='button'
-            value='start?'
+            value='Click here to start!'
             onClick={() => {setAsked([22])}}
           />
         : ''
@@ -103,6 +103,7 @@ const App = () => {
               score for round 1: {score}/10
             </div>
             <input
+              className={style.button}
               type='button'
               value='another round?'
               onClick={() => {
