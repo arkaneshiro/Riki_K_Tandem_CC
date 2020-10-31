@@ -6,30 +6,29 @@ import style from '../styles/Question.module.css';
 const Question = ({question, options, correct, qNum, answered, setAnswered, ans, chosen, newQ}) => {
 
   return (
-    <>
+    <div className={style.box}>
       <div className={style.question}>
         {question}
       </div>
-      <form>
         {answered
         // if question answered return options with highlighting
         ? <>
             {options.map((option, i) => {
               if (option === correct) {
                 return(
-                  <div key={i} className={style.correct}>
+                  <div key={i} className={`${style.correct} ${style.option}`}>
                     {option}
                   </div>
                 )
               } else if (option === chosen) {
                 return(
-                  <div key={i} className={style.incorrect}>
+                  <div key={i} className={`${style.incorrect} ${style.option}`}>
                     {option}
                   </div>
                 )
               } else {
                 return(
-                  <div key={i}>
+                  <div className={style.option} key={i}>
                     {option}
                   </div>
                 );
@@ -46,7 +45,7 @@ const Question = ({question, options, correct, qNum, answered, setAnswered, ans,
             return(
               <div
                 key={i}
-                className={style.option}
+                className={`${style.optionClickable} ${style.option}`}
                 onClick={() => {
                   ans(qNum, option)
                   setAnswered(true);
@@ -56,9 +55,8 @@ const Question = ({question, options, correct, qNum, answered, setAnswered, ans,
               </div>
             );
           })
-      }
-      </form>
-    </>
+        }
+    </div>
   );
 };
 

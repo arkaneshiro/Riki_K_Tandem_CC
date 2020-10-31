@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 
 import Title from './components/Title';
 import Question from './components/Question'
+import style from './styles/App.module.css'
 import data from './components/data/Apprentice_TandemFor400_Data.json';
 
 
@@ -73,7 +74,7 @@ const App = () => {
   return (
     <div>
       <Title/>
-      <div>
+      <div className={style.flexContainer}>
         {(asked.length !== 0 && asked.length !== 12 && rand !== '')
         ? <Question
             question={data[rand].question}
@@ -97,7 +98,7 @@ const App = () => {
         : ''
         }
         {(asked.length === 12)
-        ? <>
+        ? <div className={style.flexContainer}>
             <div>
               score for round 1: {score}/10
             </div>
@@ -111,7 +112,7 @@ const App = () => {
                 setAnswered(false);
               }}
             />
-          </>
+          </div>
         : ''
         }
       </div>

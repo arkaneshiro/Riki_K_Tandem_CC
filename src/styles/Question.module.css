@@ -1,5 +1,26 @@
-.option:hover {
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 75%;
+}
+
+.question {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.option {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    cursor: default;
+}
+
+.optionClickable:hover {
     background-color: wheat;
+    cursor: pointer;
 }
 
 .correct {
