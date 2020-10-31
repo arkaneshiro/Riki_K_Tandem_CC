@@ -12,7 +12,7 @@ const Question = ({question, options, correct, qNum, answered, setAnswered, ans,
       </div>
       <form>
         {answered
-        // if question answered returns options with highlights
+        // if question answered return options with highlighting
         ? <>
             {options.map((option, i) => {
               if (option === correct) {
@@ -41,7 +41,7 @@ const Question = ({question, options, correct, qNum, answered, setAnswered, ans,
               value='Next Question'
             />
           </>
-        // if question not answered returns clickable options
+        // if question not answered return clickable options
         : options.map((option, i) => {
             return(
               <div

@@ -48,6 +48,7 @@ const App = () => {
       setScore(score + 1)
     }
     setChosen(chosen)
+    setAsked([...asked, id])
   }
 
   // picks random question until it picks one not yet asked
@@ -61,7 +62,9 @@ const App = () => {
     }
     setRand(r)
     setOptions(shuffle([...data[r].incorrect, data[r].correct]))
-    setAsked([...asked, id])
+    if (asked.length === 11) {
+      setAsked([...asked, 22])
+    }
     setAnswered(false)
     setChosen('')
   }
@@ -71,7 +74,7 @@ const App = () => {
     <div>
       <Title/>
       <div>
-        {(asked.length !== 0 && asked.length !== 11 && rand !== '')
+        {(asked.length !== 0 && asked.length !== 12 && rand !== '')
         ? <Question
             question={data[rand].question}
             options={options}
@@ -93,7 +96,7 @@ const App = () => {
           />
         : ''
         }
-        {(asked.length === 11)
+        {(asked.length === 12)
         ? <>
             <div>
               score for round 1: {score}/10
@@ -104,6 +107,8 @@ const App = () => {
               onClick={() => {
                 setAsked([22]);
                 setScore(0);
+                setChosen('');
+                setAnswered(false);
               }}
             />
           </>
