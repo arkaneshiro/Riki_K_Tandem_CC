@@ -1,3 +1,11 @@
-.hover {
-    background-color: white;
+.option:hover {
+    background-color: wheat;
+}
+
+.correct {
+    background-color: lime;
+}
+
+.incorrect {
+    background-color: orangered;
 }

@@ -1,51 +1,62 @@
-import React, {useEffect} from "react";
+import React from "react";
 
 import style from '../styles/Question.module.css';
 
-const Question = ({qObj, qNum, ans}) => {
-  const options = qObj.incorrect.slice()
-  options.push(qObj.correct)
 
-  // randomizes order of options
-  useEffect(() => {
-    let num = Math.floor(Math.random() * Math.floor(8))
-    while (num) {
-      options.push(options.shift())
-      if (num%2 === 0) {
-        options.splice(2, 0, options.shift())
-      }
-      num --;
-    };
-  }, [options])
-
-  const hover = e => {
-    if (!e.target.className.includes(style.hover)) {
-      e.target.classList.add(style.hover)
-    } else {
-      e.target.classList.remove(style.hover)
-    }
-  }
+const Question = ({question, options, correct, qNum, answered, setAnswered, ans, chosen, newQ}) => {
 
   return (
     <>
       <div className={style.question}>
-        {qObj.question}
+        {question}
       </div>
       <form>
-        {options.map((option, i) => {
-          return(
-            <div
-              key={i}
-              onClick={() => {
-                ans(qNum, option);
-              }}
-              onMouseOver={hover}
-              onMouseLeave={hover}
-            >
-              {option}
-            </div>
-          );
-        })}
+        {answered
+        // if question answered returns options with highlights
+        ? <>
+            {options.map((option, i) => {
+              if (option === correct) {
+                return(
+                  <div key={i} className={style.correct}>
+                    {option}
+                  </div>
+                )
+              } else if (option === chosen) {
+                return(
+                  <div key={i} className={style.incorrect}>
+                    {option}
+                  </div>
+                )
+              } else {
+                return(
+                  <div key={i}>
+                    {option}
+                  </div>
+                );
+              }
+            })}
+            <input
+              type='button'
+              onClick={()=>{newQ(qNum)}}
+              value='Next Question'
+            />
+          </>
+        // if question not answered returns clickable options
+        : options.map((option, i) => {
+            return(
+              <div
+                key={i}
+                className={style.option}
+                onClick={() => {
+                  ans(qNum, option)
+                  setAnswered(true);
+                }}
+              >
+                {option}
+              </div>
+            );
+          })
+      }
       </form>
     </>
   );
