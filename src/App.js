@@ -53,7 +53,7 @@ const App = () => {
   }
 
   // picks random question until it picks one not yet asked
-  const newQ = id => {
+  const newQ = () => {
     let r = NaN
     while (true) {
       r = Math.floor(Math.random() * Math.floor(20));

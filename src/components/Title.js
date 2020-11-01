@@ -5,7 +5,7 @@ import style from '../styles/Title.module.css';
 const Title = () => {
   return (
     <div className={style.title}>
-      Riki Trivia
+      Trivia
     </div>
   );
 };
