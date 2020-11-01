@@ -6,17 +6,21 @@
 
     I started off by getting every question to display on screen with a checkbox next to it, and when you clicked the checkbox it would move that question to a 'asked' section on a different part of the screen. This allowed me to keep track of which questions had been asked or not.
 
+
 - randomized questions
 
     Getting random questions wasn't too difficult. I decided it would be best to use a useEffect hook configured to run only once when the component was loaded to pick a random question at the start, then make a function that selects a new random question called. These both work by selecting a random number between 0 and 20 and putting it into a slice of State, then using that slice of State to key into the raw data. See Challenges section for dev process of getting random question selection without repeats per round.
 
+
 - getting shuffled questions
 
-    One thing I noticed that wasn't in the requirements for this challenge but seemed essential to include was randomized answer order. Its no fun to play a trivia game if answer D is always the correct answer, so I found a random array shuffling function on stack overflow and used it to shuffle an array containing a questions answers before passing it through the props to the Question component, which I made to display the questions. See shuffing question order in Challenges section for more of my process with this.
+    One thing I noticed that wasn't in the requirements for this challenge but seemed essential to include was randomized answer order. Its no fun to play a trivia game if answer D is always the correct answer. I found a random array shuffling function on stack overflow and used it to shuffle an array containing a questions answers before passing it through the props to the Question component, which I made to display the questions. See shuffing question order in Challenges section for more of my process with this.
+
 
 - basic game behavior
 
-    at first, to test randomized questions without repeats, I made the game 21 questions long so I could try out running all the questions to make sure that was working properly. Once everything was in place, I found it most easy to use terinary statements based off of how long the array in the 'asked' slice of State was to choose what to display, wether it be a start button, a try again button with a score, or a Question component. I also used a terninary statement in my Question component to display the options with different classes assigned so that I could apply some helpful styling. The most difficult part of getting the game to work seamlessly was figuring out how to keep the Question component from calling the shuffling function too many times, or getting too many rerenders. See Challenges section for more of my process in deciding to make Question a controlled component rather than having its own discreet state.
+    At first, to test randomized questions without repeats, I made the game 21 questions long so I could try out running all the questions to make sure that was working properly. Once everything was in place, I found it most easy to use terinary statements based off of how long the array in the 'asked' slice of State was to choose what to display, wether it be a start button, a try again button with a score, or a Question component. I also used a terninary statement in my Question component to display the options with different classes assigned so that I could apply some helpful styling. The most difficult part of getting the game to work seamlessly was figuring out how to keep the Question component from calling the shuffling function too many times, or getting too many rerenders. See Challenges section for more of my process in deciding to make Question a controlled component rather than having its own discreet state.
+
 
 - styling
 
