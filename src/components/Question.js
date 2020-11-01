@@ -4,6 +4,7 @@ import style from '../styles/Question.module.css';
 
 
 const Question = ({question, options, correct, qNum, answered, setAnswered, ans, chosen, newQ}) => {
+  const idxToChar = ['A', 'B', 'C', 'D'];
 
   return (
     <div className={style.box}>
@@ -20,19 +21,19 @@ const Question = ({question, options, correct, qNum, answered, setAnswered, ans,
               if (option === correct) {
                 return(
                   <div key={i} className={`${style.correct} ${style.option}`}>
-                    {option}
+                    {`${idxToChar[i]}: ${option}`}
                   </div>
                 )
               } else if (option === chosen) {
                 return(
                   <div key={i} className={`${style.incorrect} ${style.option}`}>
-                    {option}
+                    {`${idxToChar[i]}: ${option}`}
                   </div>
                 )
               } else {
                 return(
                   <div className={style.option} key={i}>
-                    {option}
+                    {`${idxToChar[i]}: ${option}`}
                   </div>
                 );
               }
@@ -44,20 +45,22 @@ const Question = ({question, options, correct, qNum, answered, setAnswered, ans,
             />
           </form>
         // if question not answered return clickable options
-        : options.map((option, i) => {
-            return(
-              <div
-                key={i}
-                className={`${style.optionClickable} ${style.option}`}
-                onClick={() => {
-                  ans(qNum, option)
-                  setAnswered(true);
-                }}
-              >
-                {option}
-              </div>
-            );
-          })
+        : <div className={style.form}>
+            {options.map((option, i) => {
+              return(
+                <div
+                  key={i}
+                  className={`${style.optionClickable} ${style.option}`}
+                  onClick={() => {
+                    ans(qNum, option)
+                    setAnswered(true);
+                  }}
+                >
+                  {`${idxToChar[i]}: ${option}`}
+                </div>
+              );
+            })}
+          </div>
         }
     </div>
   );

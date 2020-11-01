@@ -12,9 +12,20 @@
 }
 
 .form {
+    margin-top: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 300px;
+}
+
+.option {
+    width: 280px;
+    display: flex;
+    justify-content: flex-start;
+    cursor: default;
+    padding: 2.5px 10px;
+    background-color: white;
 }
 
 .correct {
@@ -26,15 +37,9 @@
 }
 
 .submitButton {
-    margin-top: 5px;
+    margin: 5px;
 }
 
-.option {
-    width: 300px;
-    display: flex;
-    justify-content: center;
-    cursor: default;
-}
 
 .optionClickable:hover {
     background-color: wheat;
